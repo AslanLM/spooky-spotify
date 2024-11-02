@@ -1,0 +1,101 @@
+#app {
+  display: grid;
+  grid-template-areas:
+    'aside main main'
+    'player player player';
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+
+* {
+  scrollbar-width: 10px;
+  scrollbar-color: rgb(50, 50, 50) rgb(30, 30, 30);
+}
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: rgb(30, 30, 30);
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: rgb(30, 30, 30);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgb(50, 50, 50);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgb(70, 70, 70);
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('/fonts/CircularStd-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('/fonts/CircularStd-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('/fonts/CircularStd-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('/fonts/CircularStd-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('/fonts/CircularStd-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpookyFont';
+  src: url('/fonts/SpookyFont.ttf') format('truetype');
+}
+
+html {
+  font-family: 'CircularStd', system-ui, sans-serif;
+  background: #010101;
+  color: white;
+}
+
+.spooky-font {
+  font-family: 'SpookyFont';
+}
+
+
+

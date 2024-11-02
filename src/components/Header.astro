@@ -1,0 +1,30 @@
+---
+import GithubIcon from '../icons/GithubIcon.astro'
+---
+
+<div
+  class="relative z-10 py-4 px-6 flex justify-between"
+  transition:name="page header"
+  transition:persist
+>
+  <a
+    href="/"
+    aria-label="go back to home page"
+    class="bg-zinc-900 rounded-full inline-flex justify-center items-center h-8 w-8"
+  >
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 -ml-0.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+  </svg>
+  
+  </a>
+  <div class="flex items-center gap-3">
+    <a
+      target="_blank"
+      aria-label={"github repository"}
+      href="https://github.com/aslanLM"
+      class="text-gray-200 hover:text-white"
+    >
+      <GithubIcon />
+    </a>
+  </div>
+</div>

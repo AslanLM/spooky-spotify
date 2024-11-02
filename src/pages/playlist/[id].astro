@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+import MusicTable from '../../components/MusicTable.astro'
+import { allPlaylists, songs } from '../../lib/data'
+import { PlayButton } from '../../components/PlayButton'
+
+const { id } = Astro.params
+
+const playlist = allPlaylists.find((playlist) => playlist.id === id)
+const playListSongs = songs.filter((song) => song.albumId === playlist?.albumId)
+---
+
+<Layout title="Spooky Spotify | Playlist">
+  <div
+    id="playlist-container"
+    class="relative flex flex-col h-full transition-all duration-1000 bg-zinc-900 overflow-x-hidden"
+    transition:name=`playlist ${playlist?.id} box`
+  >
+
+  <Header />
+    <div class="flex flex-row gap-8 px-6 my-4">
+      <picture class="aspect-square w-52 h-52 flex-none">
+        <img
+          src={playlist?.cover}
+          alt={`Cover of ${playlist?.title}`}
+          class="object-cover w-full h-full shadow-lg"
+          transition:name=`playlist ${playlist?.id} image`
+        />
+      </picture>
+
+      <div class="flex flex-col justify-between">
+        <h2 class="flex flex-1 items-end">Playlist</h2>
+        <div>
+          <h1 class="text-5xl font-bold block text-white">
+            {playlist?.title}
+            <span transition:name=`playlist ${playlist?.id} title`></span>
+          </h1>
+        </div>
+
+        <div class="flex-1 flex items-end">
+          <div class="text-sm text-gray-300 font-normal">
+            <span>{playlist?.artists.join(', ')}</span>
+            <p class="mt-1">
+              <span class="text-white">{playListSongs.length} songs</span>,
+              about 3h 15min
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="absolute h-full inset-0 -z-[1] bg-gradient-to-b from-context"
+      style=`--context-color:${playlist?.color.accent}`
+    >
+      <img
+        src={playlist?.cover}
+        alt={playlist?.title}
+        class="transition-all duration-500 -z-[1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t via-transparent from-zinc-900"
+      >
+      </div>
+    </div>
+
+    <section class="p-6 bg-zinc-900 bg-opacity-60 flex-1">
+      <PlayButton id={id} client:load size="large" />
+      <MusicTable songs={playListSongs} />
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import PlayListCardTop from '../components/PlayListCardTop.astro'
+import PlayListCardBottom from '../components/PlayListCardBottom.astro'
+import Model3D from '../components/Model3D'
+import { playlists, morePlaylists } from '../lib/data'
+---
+
+<Layout title="Spooky Spotify | Home">
+  <div
+    id="playlist-container"
+    class="relative transition-all duration-1000 bg-gradient-to-b from-context via-context/20"
+    style="--context-color:#3d2b60;"
+  >
+    <Header />
+
+    <div id="banner" class="relative w-ful h-[120px] z-10">
+      <div class="flex flex-col justify-center items-center w-full h-full">
+        <h1 class="spooky-font text-8xl">Happy Halloween Vibes</h1>
+        <h2 class="font-semibold text-sm flex items-center gap-1">
+          <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+          </svg>
+          </span>
+          Curated playlists for your haunting nights
+        </h2>
+      </div>
+      <Model3D client:load />
+    </div>
+
+    <div class="relative z-10 px-6 pt-6">
+      <h1 class="text-3xl font-semibold">Recently Played</h1>
+      <div
+        class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
+      >
+        {playlists.map((playlist) => <PlayListCardTop playlist={playlist} />)}
+      </div>
+    </div>
+  </div>
+
+  <div class="px-6 relative z-10 mt-16">
+    <h2 class="text-2xl font-semibold">Made for you</h2>
+    <div class="flex flex-wrap justify-around mt-4">
+      {
+        morePlaylists.map((playlist) => (
+          <PlayListCardBottom playlist={playlist} />
+        ))
+      }
+    </div>
+  </div>
+</Layout>
